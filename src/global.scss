@@ -24,3 +24,24 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+/* Swiper.js CSS */
+@import "swiper/swiper-bundle.css";
+
+
+@font-face {
+  font-family: 'Plex';
+  font-style: normal;
+  font-weight: normal;
+  src: local("/assets/fonts/IBMPlexSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Plex';
+  font-weight: bold;
+  src: local("/assets/fonts/IBMPlexSans-Bold.ttf");
+}
+
+:root {
+  --ion-font-family: 'Plex';
+}
