@@ -1,13 +1,31 @@
-<ion-content  [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <ion-row class="ion-justify-content-around items-center ion-align-items-center" #hide_header>
+    <ion-col size="2">
+      <ion-img src="./assets/images/delivery.png"/>
+    </ion-col>
+    <ion-col size="6">
+      <ion-text>
+        <span>Now</span><br>
+        <b>Malaysia</b>
+        <ion-icon name="chevron-down-outline" slot="icon-only"></ion-icon>
+      </ion-text>
+      <ion-col size="1">
+        <ion-button fill="clear">
+          <ion-icon name="person-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-col>
+  </ion-row>
+
   <div class="px-2 my-2">
-    <swiper [config]="categorySlideConfig" >
-      <ng-template swiperSlide *ngFor="let cat of categories" >
+    <swiper [config]="categorySlideConfig">
+      <ng-template swiperSlide *ngFor="let cat of categories">
         <div>
-          <ion-img  [src]="cat.img" />
+          <ion-img [src]="cat.img"/>
         </div>
       </ng-template>
     </swiper>
@@ -16,8 +34,8 @@
 
   <div>
     <swiper [config]="highlightSlideConfig">
-      <ng-template swiperSlide *ngFor="let h of highlights" >
-        <ion-img  [src]="h.img" />
+      <ng-template swiperSlide *ngFor="let h of highlights">
+        <ion-img [src]="h.img"/>
       </ng-template>
     </swiper>
   </div>
@@ -26,17 +44,19 @@
   <ion-text color="dark"><b style="padding-left: 10px">Featured</b></ion-text>
   <div class="px-2">
     <swiper [config]="featuredSlideConfig">
-      <ng-template swiperSlide *ngFor="let f of featured" >
-        <div class="flex flex-col" [routerLink]="['/', 'details']" >
-          <ion-img  [src]="f.img" />
+      <ng-template swiperSlide *ngFor="let f of featured">
+        <div class="flex flex-col" [routerLink]="['/', 'details']">
+          <ion-img [src]="f.img"/>
           <div class="info flex flex-col">
             <ion-text color="dark" class="font-bold">{{f.name}}</ion-text>
             <span>
             <ion-icon name="star" color="secondary"></ion-icon>
-            <ion-text color="secondary">{{f.rating}}</ion-text> {{f.ratings}}
+            <ion-text color="secondary">{{f.rating}}</ion-text>
+              {{f.ratings}}
           </span>
             <span>
-            <ion-icon name="location-outline"></ion-icon> {{f.distance}}
+            <ion-icon name="location-outline"></ion-icon>
+              {{f.distance}}
           </span>
           </div>
         </div>

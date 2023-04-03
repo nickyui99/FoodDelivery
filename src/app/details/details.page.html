@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div *ngIf="data">
+    <ion-row class="info-row" #hide_header>
+      <ion-col size="12" class="light-bg ion-padding-start">
+        <ion-icon name="star" color="primary"></ion-icon>
+<!--        <ion-text color="primary">{{data.rating}}</ion-text>-->
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

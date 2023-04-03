@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import {SharedDirectivesModule} from "../directives/shared-directives.module";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-details',
@@ -13,14 +14,23 @@ import {SharedDirectivesModule} from "../directives/shared-directives.module";
     IonicModule,
     CommonModule,
     FormsModule,
-    SharedDirectivesModule
+    SharedDirectivesModule,
+    HttpClientModule
   ]
 })
 export class DetailsPage implements OnInit {
 
-  constructor() { }
+  data = [];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http
+      .get('https://devdactic.fra1.digitaloceanspaces.com/foodui/1.json')
+      .subscribe((res: any) => {
+        console.log(res);
+        this.data = res;
+      });
   }
 
 }

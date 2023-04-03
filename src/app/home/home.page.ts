@@ -1,9 +1,9 @@
-import {AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild} from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild} from '@angular/core';
 import {IonicModule} from '@ionic/angular';
 
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {NgForOf} from "@angular/common";
-import {Navigation, Pagination, SwiperOptions} from "swiper";
+import {NgForOf, NgIf} from "@angular/common";
+import {Navigation, SwiperOptions} from "swiper";
 import {SwiperComponent, SwiperModule} from "swiper/angular";
 import {RouterLink} from "@angular/router";
 
@@ -14,7 +14,7 @@ import {RouterLink} from "@angular/router";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, HttpClientModule, SwiperModule, NgForOf, RouterLink],
+  imports: [IonicModule, HttpClientModule, SwiperModule, NgForOf, RouterLink, NgIf],
 })
 
 
@@ -27,6 +27,7 @@ export class HomePage implements OnInit{
   categories: any[] = [];
   highlights: any[] = [];
   featured: any[] = [];
+  showLocationDetail = false;
 
   categorySlideConfig: SwiperOptions = {
     modules: [Navigation],
@@ -70,6 +71,11 @@ export class HomePage implements OnInit{
       event.target.complete();
     }, 2000);
   }
+
+  // onScroll(event) {
+  //   const offset = event.detail.scrollTop;
+  //   this.showLocationDetail = offset > 40;
+  // }
 
   ngAfterViewInit(): void {
   }
