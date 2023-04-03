@@ -1,18 +1,47 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content  [fullscreen]="true">
-  <swiper [config]="config">
-    <ng-template swiperSlide *ngFor="let cat of categories" >
-      <div>
-        <ion-img  [src]="cat.img" />
-      </div>
-    </ng-template>
-  </swiper>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="px-2 my-2">
+    <swiper [config]="categorySlideConfig" >
+      <ng-template swiperSlide *ngFor="let cat of categories" >
+        <div>
+          <ion-img  [src]="cat.img" />
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+
+
+  <div>
+    <swiper [config]="highlightSlideConfig">
+      <ng-template swiperSlide *ngFor="let h of highlights" >
+        <ion-img  [src]="h.img" />
+      </ng-template>
+    </swiper>
+  </div>
+
+
+  <ion-text color="dark"><b style="padding-left: 10px">Featured</b></ion-text>
+  <div class="px-2">
+    <swiper [config]="featuredSlideConfig">
+      <ng-template swiperSlide *ngFor="let f of featured" >
+        <div class="flex flex-col" [routerLink]="['/', 'details']" >
+          <ion-img  [src]="f.img" />
+          <div class="info flex flex-col">
+            <ion-text color="dark" class="font-bold">{{f.name}}</ion-text>
+            <span>
+            <ion-icon name="star" color="secondary"></ion-icon>
+            <ion-text color="secondary">{{f.rating}}</ion-text> {{f.ratings}}
+          </span>
+            <span>
+            <ion-icon name="location-outline"></ion-icon> {{f.distance}}
+          </span>
+          </div>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
 
 </ion-content>

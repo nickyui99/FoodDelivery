@@ -1,1 +1,23 @@
 
+
+/*Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Plex';
+  font-style: normal;
+  font-weight: normal;
+  src: local("/assets/fonts/IBMPlexSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Plex';
+  font-weight: bold;
+  src: local("/assets/fonts/IBMPlexSans-Bold.ttf");
+}
+
+:root {
+  --ion-font-family: 'Plex';
+}
